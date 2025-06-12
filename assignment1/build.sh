@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t <> .
+docker build -t jra4283.
 

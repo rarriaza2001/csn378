@@ -8,11 +8,13 @@ def hello():
 
 # Add "greetings" route
 # Read "GREETING" environment variable and return its value
-
+@app.route("/greetings")
+def greetings():
+    return os.getenv("GREETING")
 
 # Add "listcontents" route
 # Read contents of "hostfolder" and return the contents
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000) # Change port to 5001
+    app.run(host='0.0.0.0', port=5001) # Change port to 5001
