@@ -1,3 +1,4 @@
-IMAGE: "dk22736-assignment3:latest"
+# Requirement 2.0
+IMAGE: ""
 
 # Add variables (Requirement 2.1)
