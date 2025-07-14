@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if (( $# < 3 )); then
+  echo "kubectl appmetrics show <kind> <instance> <kubeconfig>"
+  exit 0
+fi
+
+# Requirement 4.1
+# Take following inputs in order
+# kind
+# instance
+# kubeconfig
+
+
+URL=`kubectl appurl $kind $instance -k $kubeconfig`
+URL=$(echo $URL | sed "s/[][]//g" | sed "s/'//g")
+echo $URL 
+
+echo "---"
+curl $URL/greetings
+echo "---"
+curl $URL/listcontents
+echo "---"
+curl $URL/getk8sobjects
+echo "---"
+
+# Requirement 4.2
+# Call the metrics endpoint
+

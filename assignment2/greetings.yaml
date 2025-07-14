@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greetings 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+  template:
+    metadata:
+      labels:
+    spec:
+      serviceAccount: greetings
+      containers:
+        - name: assignment2 
+          image: ""
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5001
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: greetings
+spec:
+  selector:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5001
+  type: ClusterIP
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: greetings-config
+data:
+  filenames.txt: |
+    application.py
+    Dockerfile
+    build.sh
+    requirements.txt
+    greetings.yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: greetings
+  namespace: default
+---
